@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>아마추어 리그 참가 신청 | RING CHAMPIONSHIP</title>
+<meta name="description" content="RING CHAMPIONSHIP 아마추어 리그 참가 신청서 (시안).">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="stylesheet" href="assets/css/style.css?v=20260826">
+</head>
+<body>
+
+<div class="demo-bar">
+  이 신청서는 <strong>시안(데모)</strong>입니다. 실제 접수 시스템에 연결되어 있지 않으며, 입력 내용은 이 브라우저에만 임시 저장됩니다.
+</div>
+
+<header class="site-header" id="site-header"></header>
+
+<!-- 리그 안내 -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="section-title"><small>AMATEUR</small>아마추어 리그</h2>
+    </div>
+
+    <div class="notice" style="margin-bottom:34px">
+      <strong>이 페이지의 안내 문구는 아직 비어 있습니다.</strong><br>
+      리그 이름, 참가 자격, 종목, 체급, 접수 절차 등 확정된 내용을 알려주시면 그대로 채워 넣겠습니다.
+      확인되지 않은 내용은 임의로 적지 않았습니다.
+    </div>
+
+    <div class="fl-steps">
+      <div class="fl-step">
+        <div class="num">01</div>
+        <h4>리그 소개</h4>
+        <p class="todo">No data</p>
+      </div>
+      <div class="fl-step">
+        <div class="num">02</div>
+        <h4>참가 자격</h4>
+        <p class="todo">No data</p>
+      </div>
+      <div class="fl-step">
+        <div class="num">03</div>
+        <h4>종목 · 체급</h4>
+        <p class="todo">No data</p>
+      </div>
+      <div class="fl-step">
+        <div class="num">04</div>
+        <h4>접수 절차 · 준비물</h4>
+        <p class="todo">No data</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 신청서 -->
+<section class="section" id="apply">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="section-title"><small>APPLICATION</small>참가 신청서</h2>
+    </div>
+
+    <form class="form" id="applyForm" novalidate>
+      <div class="form-grid">
+
+        <div class="field">
+          <label for="name">이름<span class="req">*</span></label>
+          <input type="text" id="name" name="name" placeholder="홍길동" autocomplete="name">
+          <span class="err">이름을 입력해주세요.</span>
+        </div>
+
+        <div class="field">
+          <label for="birth">생년월일<span class="req">*</span></label>
+          <input type="date" id="birth" name="birth">
+          <span class="err">생년월일을 입력해주세요.</span>
+        </div>
+
+        <div class="field">
+          <label>성별<span class="req">*</span></label>
+          <div class="radio-row">
+            <label><input type="radio" name="gender" value="남자"> 남자</label>
+            <label><input type="radio" name="gender" value="여자"> 여자</label>
+          </div>
+          <span class="err">성별을 선택해주세요.</span>
+        </div>
+
+        <div class="field">
+          <label for="phone">연락처<span class="req">*</span></label>
+          <input type="tel" id="phone" name="phone" placeholder="010-1234-5678" autocomplete="tel">
+          <span class="err">연락처를 010-0000-0000 형식으로 입력해주세요.</span>
+        </div>
+
+        <div class="field">
+          <label for="email">이메일<span class="req">*</span></label>
+          <input type="email" id="email" name="email" placeholder="fighter@example.com" autocomplete="email">
+          <span class="err">이메일 형식이 올바르지 않습니다.</span>
+        </div>
+
+        <div class="field">
+          <label for="gym">소속 체육관<span class="req">*</span></label>
+          <input type="text" id="gym" name="gym" placeholder="○○ 짐 / 무소속">
+          <span class="err">소속 체육관을 입력해주세요. (무소속이면 '무소속')</span>
+        </div>
+
+        <!-- 종목 / 체급 선택지는 data.js 의 FL_SPORTS, FL_WEIGHTS 에서 채워집니다.
+             확인된 정보가 없어 지금은 비어 있고, 비어 있으면 직접 입력칸으로 바뀝니다. -->
+        <div class="field">
+          <label for="sport">희망 종목<span class="req">*</span></label>
+          <select id="sport" name="sport"><option value="">선택해주세요</option></select>
+          <span class="err">종목을 입력해주세요.</span>
+        </div>
+
+        <div class="field">
+          <label for="weight">희망 체급<span class="req">*</span></label>
+          <select id="weight" name="weight"><option value="">선택해주세요</option></select>
+          <span class="err">체급을 입력해주세요.</span>
+        </div>
+
+        <div class="field">
+          <label for="record">아마추어 전적</label>
+          <input type="text" id="record" name="record" placeholder="예: 3전 2승 1패 / 없음">
+          <span class="hint">없으면 비워두셔도 됩니다.</span>
+        </div>
+
+        <div class="field">
+          <label for="career">수련 기간</label>
+          <input type="text" id="career" name="career" placeholder="예: 1년 6개월">
+        </div>
+
+        <!-- 만 18세 미만일 때만 표시 -->
+        <div class="guardian-block" id="guardianBlock">
+          <div class="field">
+            <label for="gname">보호자 성함<span class="req">*</span></label>
+            <input type="text" id="gname" name="gname" placeholder="미성년자 신청 시 필수">
+            <span class="err">보호자 성함을 입력해주세요.</span>
+          </div>
+          <div class="field">
+            <label for="gphone">보호자 연락처<span class="req">*</span></label>
+            <input type="tel" id="gphone" name="gphone" placeholder="010-1234-5678">
+            <span class="err">보호자 연락처를 010-0000-0000 형식으로 입력해주세요.</span>
+          </div>
+        </div>
+
+        <div class="field full">
+          <label for="memo">자기소개 · 전달사항</label>
+          <textarea id="memo" name="memo" placeholder="수련 이력, 출전 경험, 부상 이력 등 담당자가 알아야 할 내용을 적어주세요."></textarea>
+        </div>
+
+        <div class="field full">
+          <div class="check-row">
+            <input type="checkbox" id="agree" name="agree">
+            <label for="agree">
+              개인정보 수집 · 이용에 동의합니다.<span class="req">*</span><br>
+              <span class="hint">
+                수집 항목: 이름, 생년월일, 성별, 연락처, 이메일, 소속 체육관 (미성년자는 보호자 성함 · 연락처)<br>
+                <span class="todo">이용 목적 · 보유 기간: No data</span>
+              </span>
+            </label>
+          </div>
+          <span class="err">개인정보 수집 · 이용에 동의해주셔야 신청이 가능합니다.</span>
+        </div>
+
+        <div class="field full">
+          <button type="submit" class="btn">신청서 제출하기</button>
+        </div>
+      </div>
+    </form>
+
+    <!-- 접수 완료 화면 -->
+    <div class="receipt" id="receipt">
+      <div class="notice" style="margin-bottom:26px">
+        <strong>접수가 완료되었습니다.</strong>
+        (이 화면은 시안이며 실제로 접수되지는 않습니다.)
+      </div>
+      <div class="muted" style="font-size:13px;letter-spacing:.14em;font-weight:700">접수번호</div>
+      <div class="receipt-no" id="receiptNo"></div>
+      <ul class="summary" id="receiptSummary"></ul>
+      <div class="hero-actions" style="margin-top:30px">
+        <a class="btn ghost" href="index.html">홈으로</a>
+        <button class="btn ghost" id="againBtn" type="button">신청서 다시 작성</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer" id="site-footer"></footer>
+
+<script src="assets/js/data.js?v=20260826"></script>
+<script src="assets/js/site.js?v=20260826"></script>
+<script src="assets/js/apply.js?v=20260826"></script>
+</body>
+</html>
