@@ -380,6 +380,45 @@ a { color: inherit; text-decoration: none; }
   .ig-grid { column-width: auto; column-count: 1; }
 }
 
+/* 인용문 -------------------------------------------------------------------- */
+.quote {
+  margin: 0; padding: 26px 30px;
+  border-left: 3px solid var(--gold); background: var(--bg-2);
+  border-radius: var(--radius);
+}
+.quote p { margin: 0 0 14px; font-size: 17px; line-height: 1.8; color: #e2e2e8; }
+.quote strong { color: var(--gold); }
+.quote cite {
+  font-style: normal; font-size: 12px; letter-spacing: .12em;
+  color: var(--muted); font-weight: 700;
+}
+
+/* 신청 링크 카드 ------------------------------------------------------------ */
+.apply-list { display: grid; gap: 14px; }
+.apply-card {
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  flex-wrap: wrap;
+  background: var(--bg-2); border: 1px solid var(--line);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--radius); padding: 24px 28px;
+}
+.apply-card.closed { border-left-color: var(--line); opacity: .7; }
+.apply-card h3 {
+  font-family: var(--display); font-weight: 400; font-size: 22px;
+  margin: 0 0 6px; text-transform: uppercase; letter-spacing: .02em;
+}
+.apply-card p { margin: 0; font-size: 14px; color: var(--muted); }
+
+/* 채널 링크 ----------------------------------------------------------------- */
+.link-list { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); }
+.link-card {
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 18px 20px; font-size: 15px; font-weight: 700; transition: border-color .16s;
+}
+.link-card:hover { border-color: var(--gold); }
+.link-host { font-size: 12px; font-weight: 500; color: var(--muted); letter-spacing: .04em; }
+
 /* 스폰서 ------------------------------------------------------------------ */
 .sponsors { display: flex; flex-wrap: wrap; gap: 10px; }
 .sponsors span {

@@ -86,7 +86,7 @@ const NAV = [
   { href: 'events.html',        label: '경기 일정' },
   { href: 'event.html',         label: '대회 상세' },
   { href: 'instagram.html',     label: 'SNS' },
-  { href: 'future-league.html', label: '아마추어 리그' }
+  { href: 'future-league.html', label: '참가 신청' }
 ];
 
 function renderHeader(activeHref) {
@@ -142,7 +142,7 @@ function renderFooter() {
               <li><a href="events.html">경기 일정</a></li>
               <li><a href="event.html">대회 상세</a></li>
               <li><a href="instagram.html">SNS</a></li>
-              <li><a href="future-league.html">아마추어 리그</a></li>
+              <li><a href="future-league.html">퓨쳐리그</a></li>
               <li><a href="future-league.html#apply">참가 신청</a></li>
             </ul>
           </div>
