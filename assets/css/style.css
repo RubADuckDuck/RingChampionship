@@ -239,8 +239,9 @@ a { color: inherit; text-decoration: none; }
 .bout:hover { border-color: #3a3a42; }
 .bout.headline { border-color: var(--gold); background: linear-gradient(180deg, #16130d, var(--bg-2)); }
 .bout .fighter { font-family: var(--display); font-size: clamp(17px, 2.4vw, 25px); line-height: 1.1; text-transform: uppercase; }
-.bout .fighter.red { text-align: right; }
-.bout .fighter.blue { text-align: left; }
+.bout .side.red { text-align: right; }
+.bout .side.blue { text-align: left; }
+.bout .team { font-size: 12px; color: var(--muted); margin-top: 5px; letter-spacing: .02em; }
 .bout .mid { text-align: center; }
 .bout .vs {
   font-family: var(--display); font-size: 15px; color: var(--gold); letter-spacing: .1em;
@@ -483,9 +484,9 @@ a { color: inherit; text-decoration: none; }
   .hero { min-height: 68vh; }
 
   .bout { grid-template-columns: 1fr; gap: 6px; text-align: center; padding: 20px 16px; }
-  .bout .fighter.red, .bout .fighter.blue { text-align: center; }
+  .bout .side.red, .bout .side.blue { text-align: center; }
   .bout .mid { order: 2; padding: 6px 0; }
-  .bout .fighter.blue { order: 3; }
+  .bout .side.blue { order: 3; }
 
   .form-grid { grid-template-columns: 1fr; }
   .info-list li, .summary li { grid-template-columns: 88px 1fr; gap: 10px; }

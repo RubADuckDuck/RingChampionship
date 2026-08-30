@@ -207,14 +207,20 @@ function boutRow(b) {
   const cls = b.weight ? esc(b.weight) + (ko ? ` <span class="muted">${ko}</span>` : '') : '';
   return `
     <div class="bout${head}">
-      <div class="fighter red">${esc(b.red)}</div>
+      <div class="side red">
+        <div class="fighter">${esc(b.red)}</div>
+        ${b.redTeam ? `<div class="team">${esc(b.redTeam)}</div>` : ''}
+      </div>
       <div class="mid">
         ${b.tag ? `<span class="tag">${esc(b.tag)}</span>` : ''}
         <div class="vs">VS</div>
         ${cls ? `<div class="cls">${cls}</div>` : ''}
         ${b.rule ? `<div class="rule">${esc(b.rule)}</div>` : ''}
       </div>
-      <div class="fighter blue">${esc(b.blue)}</div>
+      <div class="side blue">
+        <div class="fighter">${esc(b.blue)}</div>
+        ${b.blueTeam ? `<div class="team">${esc(b.blueTeam)}</div>` : ''}
+      </div>
     </div>`;
 }
 
