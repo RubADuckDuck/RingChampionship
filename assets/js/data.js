@@ -245,4 +245,16 @@ const FL_WEIGHTS = [];
    처음 로딩은 가볍습니다. (스크롤하면 다음 것들이 이어서 로드됩니다)
    -------------------------------------------------------------------------- */
 const INSTAGRAM_POSTS = [
+  'https://www.instagram.com/p/Dbk_tiPhKY_/',
+  'https://www.instagram.com/p/DcbduL8hTQ5/',
+  'https://www.instagram.com/p/DbzXUDSh5P6/',
+  'https://www.instagram.com/p/DbW3ftEhVjJ/',
+  'https://www.instagram.com/p/DaILSMPAfVG/',
+  'https://www.instagram.com/p/DaF7LZRgV-c/',
+  'https://www.instagram.com/p/DZ6ZDL9AYxW/',
+  'https://www.instagram.com/p/DZtpRIXBXDW/',
+  'https://www.instagram.com/p/DZazbzOT87a/',
+  'https://www.instagram.com/p/DZAMDY-hdO5/',
+  'https://www.instagram.com/p/DY8NXG7hPaN/',
+  'https://www.instagram.com/p/DY7-71Ok-jq/',
 ];

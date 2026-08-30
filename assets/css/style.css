@@ -345,20 +345,40 @@ a { color: inherit; text-decoration: none; }
 
 
 /* 인스타그램 목록 ---------------------------------------------------------- */
-.ig-grid { display: flex; flex-direction: column; gap: 0; }
-.ig-batch {
-  display: grid; gap: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(326px, 1fr));
-  margin-bottom: 20px;
+/* 게시물마다 높이가 달라서 격자로 깔면 줄이 들쭉날쭉해진다.
+   열(column) 레이아웃으로 흘려보내면 높이 차이가 자연스럽게 메워진다. */
+.ig-grid {
+  column-width: 326px;
+  column-gap: 18px;
 }
-/* 인스타 embed 는 자체 스타일(흰 배경)을 갖는다. 어두운 배경에서 뜨는 걸 막기 위해 여백만 정리 */
-.ig-batch .instagram-media { margin: 0 !important; min-width: 0 !important; max-width: 100% !important; }
+.ig-cell {
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  margin: 0 0 18px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  line-height: 0;
+}
+.ig-cell .instagram-media {
+  margin: 0 !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
 .ig-sentinel { height: 1px; }
-.ig-status { padding: 24px 0 8px; text-align: center; }
-.ig-more, .ig-end {
-  font-size: 13px; letter-spacing: .08em; color: var(--muted);
-}
+.ig-status { padding: 26px 0 8px; text-align: center; }
+.ig-more, .ig-end { font-size: 13px; letter-spacing: .08em; color: var(--muted); }
 .ig-end { color: var(--gold); }
+
+@media (max-width: 760px) {
+  .ig-grid { column-width: auto; column-count: 1; }
+}
 
 /* 스폰서 ------------------------------------------------------------------ */
 .sponsors { display: flex; flex-wrap: wrap; gap: 10px; }

@@ -58,10 +58,14 @@ async function loadNext() {
   loading = true;
 
   const slice = INSTAGRAM_POSTS.slice(cursor, cursor + BATCH);
-  const box = document.createElement('div');
-  box.className = 'ig-batch';
-  box.innerHTML = slice.map(embedBlock).join('');
-  grid.appendChild(box);
+
+  // 열(column) 레이아웃이 끊기지 않도록 묶음을 따로 감싸지 않고 한 흐름에 이어 붙인다
+  slice.forEach(url => {
+    const cell = document.createElement('div');
+    cell.className = 'ig-cell';
+    cell.innerHTML = embedBlock(url);
+    grid.appendChild(cell);
+  });
   cursor += slice.length;
 
   await loadEmbedScript();
