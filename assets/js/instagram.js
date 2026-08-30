@@ -5,7 +5,7 @@
    -------------------------------------------------------------------------- */
 initPage('instagram.html');
 
-const PER_PAGE = 20;                   // 한 페이지에 보여줄 게시물 수
+const PER_PAGE = 10;                   // 한 페이지에 보여줄 게시물 수 (숫자만 바꾸면 됩니다)
 const grid = document.getElementById('ig-grid');
 const statusEl = document.getElementById('ig-status');
 const pagerEl = document.getElementById('ig-pager');
