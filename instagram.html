@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>경기 일정 | RING CHAMPIONSHIP</title>
-<meta name="description" content="RING CHAMPIONSHIP 예정 대회와 지난 대회 일정.">
+<title>인스타그램 | RING CHAMPIONSHIP</title>
+<meta name="description" content="RING CHAMPIONSHIP 인스타그램 게시물 모음.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,15 +19,15 @@
 <section class="section">
   <div class="wrap">
     <div class="section-head">
-      <h2 class="section-title"><small>EVENTS</small>경기 일정</h2>
+      <h2 class="section-title"><small>INSTAGRAM</small>SNS</h2>
+      <a class="section-link" id="ig-profile" href="#" target="_blank" rel="noopener">@ringchampionship →</a>
     </div>
 
-    <div class="tabs">
-      <button data-tab="upcoming" class="active">예정된 대회</button>
-      <button data-tab="past">지난 대회</button>
-    </div>
+    <div id="ig-grid" class="ig-grid"></div>
 
-    <div class="grid" id="event-list"></div>
+    <!-- 스크롤이 여기 닿으면 다음 묶음을 불러온다 -->
+    <div id="ig-sentinel" class="ig-sentinel"></div>
+    <div id="ig-status" class="ig-status"></div>
   </div>
 </section>
 
@@ -35,6 +35,6 @@
 
 <script src="assets/js/data.js?v=20260831"></script>
 <script src="assets/js/site.js?v=20260831"></script>
-<script src="assets/js/events.js?v=20260831"></script>
+<script src="assets/js/instagram.js?v=20260831"></script>
 </body>
 </html>

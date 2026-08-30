@@ -85,6 +85,7 @@ const NAV = [
   { href: 'index.html',         label: '홈' },
   { href: 'events.html',        label: '경기 일정' },
   { href: 'event.html',         label: '대회 상세' },
+  { href: 'instagram.html',     label: 'SNS' },
   { href: 'future-league.html', label: '아마추어 리그' }
 ];
 
@@ -123,7 +124,7 @@ function renderFooter() {
   else sns.push('<li>Instagram — RING FC</li>');
 
   const contact = [];
-  if (SITE.contact.email) contact.push(`<li>${esc(SITE.contact.email)}</li>`);
+  if (SITE.contact.email) contact.push(`<li><a href="mailto:${esc(SITE.contact.email)}">${esc(SITE.contact.email)}</a></li>`);
   if (SITE.contact.phone) contact.push(`<li>${esc(SITE.contact.phone)}</li>`);
   contact.push(`<li>${esc(SITE.contact.gym)}</li>`);
 
@@ -140,6 +141,7 @@ function renderFooter() {
             <ul>
               <li><a href="events.html">경기 일정</a></li>
               <li><a href="event.html">대회 상세</a></li>
+              <li><a href="instagram.html">SNS</a></li>
               <li><a href="future-league.html">아마추어 리그</a></li>
               <li><a href="future-league.html#apply">참가 신청</a></li>
             </ul>

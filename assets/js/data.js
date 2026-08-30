@@ -25,11 +25,11 @@ const SITE = {
 
   // 아래 항목은 실제 값을 아시면 채워주세요. 비어 있으면 링크 없이 이름만 표시됩니다.
   sns: {
-    youtube: '',        // 예: 'https://www.youtube.com/@ringfc'
-    instagram: ''       // 예: 'https://www.instagram.com/ringfc'
+    youtube: 'https://www.youtube.com/channel/UCuv-uaZaySPNMBaeWki_W_A',
+    instagram: 'https://www.instagram.com/ringchampionship/'
   },
   contact: {
-    email: '',          // 예: 'contact@ringfc.kr'
+    email: 'ringmma@naver.com',   // 인스타 프로필에 공개된 사업용 문의 메일
     phone: '',          // 예: '02-000-0000'
     gym: 'RING FC OFFICIAL GYM'
   }
@@ -232,3 +232,17 @@ const WEIGHT_KO = {
    -------------------------------------------------------------------------- */
 const FL_SPORTS = [];
 const FL_WEIGHTS = [];
+
+/* 인스타그램 게시물 목록 ---------------------------------------------------
+   https://www.instagram.com/ringchampionship/ 의 게시물 주소를 넣습니다.
+   최신 글이 위로 오게 넣으면 사이트에도 그 순서로 보입니다.
+
+   넣는 형식 (게시물이든 릴스든 주소 그대로):
+     'https://www.instagram.com/p/XXXXXXXXX/',
+     'https://www.instagram.com/reel/YYYYYYYYY/',
+
+   개수 제한은 없습니다. 몇 백 개를 넣어도 화면에 보이는 만큼만 불러오므로
+   처음 로딩은 가볍습니다. (스크롤하면 다음 것들이 이어서 로드됩니다)
+   -------------------------------------------------------------------------- */
+const INSTAGRAM_POSTS = [
+];
