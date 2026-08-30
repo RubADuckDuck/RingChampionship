@@ -8,9 +8,11 @@ const latest = past[0] || null;
 
 /* --- 히어로 -------------------------------------------------------------- */
 (function renderHero() {
-  // 배경은 키비주얼이 지정된 대회 -> 최근 대회 포스터 순으로 사용
-  const withKey = EVENTS.find(e => e.key);
-  const bg = (withKey && withKey.key) || (latest && latest.poster) || '';
+  // 히어로에 쓸 대회: 다음 대회 -> 없으면 최근 대회
+  // (data.js 의 어떤 대회에 key 를 지정하면 배경만 그 이미지로 바꿀 수 있다)
+  const heroEvent = (next && next.poster) ? next : latest;
+  const override = EVENTS.find(e => e.key);
+  const bg = (override && override.key) || (heroEvent && heroEvent.poster) || '';
 
   let eyebrow = 'NEXT EVENT';
   let title = SITE.name;
@@ -29,7 +31,7 @@ const latest = past[0] || null;
     : '';
 
   // 배경은 포스터를 흐리게 깔고, 포스터 원본은 오른쪽에 그대로 보여준다
-  const posterSrc = (withKey && withKey.poster) || (latest && latest.poster) || '';
+  const posterSrc = (heroEvent && heroEvent.poster) || '';
 
   document.getElementById('hero').innerHTML = `
     <div class="hero-bg" style="background-image:url('${esc(bg)}')"></div>
@@ -47,8 +49,8 @@ const latest = past[0] || null;
           </div>
         </div>
         ${posterSrc ? `
-        <a class="hero-poster" href="event.html?id=${encodeURIComponent(withKey ? withKey.id : latest.id)}">
-          <img src="${esc(posterSrc)}" alt="${esc(withKey ? withKey.title : latest.title)} 포스터">
+        <a class="hero-poster" href="event.html?id=${encodeURIComponent(heroEvent.id)}">
+          <img src="${esc(posterSrc)}" alt="${esc(heroEvent.title)} 포스터">
         </a>` : ''}
       </div>
     </div>`;
