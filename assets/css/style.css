@@ -367,7 +367,7 @@ a { color: inherit; text-decoration: none; }
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(326px, 1fr));
   gap: 18px;
-  align-items: start;            /* 같은 줄에서 짧은 카드가 늘어나지 않게 */
+  align-items: stretch;          /* 한 줄 안에서는 카드 아랫단을 맞춘다 */
 }
 .ig-cell {
   position: relative;
@@ -398,6 +398,7 @@ a { color: inherit; text-decoration: none; }
   to   { background-position: -120% 0; }
 }
 
+.ig-cell { display: flex; flex-direction: column; }
 .ig-cell .instagram-media {
   margin: 0 !important; min-width: 0 !important;
   width: 100% !important; max-width: 100% !important;
