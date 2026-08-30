@@ -94,9 +94,6 @@ function layout() {
   const cols = Math.max(1, Math.min(cells.length, Math.floor((total + GAP) / (MIN_COL + GAP))));
   const colW = Math.floor((total - GAP * (cols - 1)) / cols);
 
-  // 아직 안 뜬 칸이 잡아둘 높이도 열 너비에 맞춰 갱신
-  grid.style.setProperty('--ig-h', Math.round(colW * 1.25 + 125) + 'px');
-
   const heights = new Array(cols).fill(0);
   cells.forEach(cell => {
     cell.style.width = colW + 'px';

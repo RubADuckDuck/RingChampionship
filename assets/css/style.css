@@ -372,10 +372,8 @@ a { color: inherit; text-decoration: none; }
   background: var(--bg-2);
   border: 1px solid var(--line);
   line-height: 0;
-  min-height: 200px;
+  min-height: 180px;             /* 뜨기 전 최소 자리. 통일된 높이를 강제하지 않는다 */
 }
-/* 아직 안 뜬 칸은 자리 높이를 유지한다 */
-.ig-cell:not(.ready), .ig-cell.stalled { min-height: var(--ig-h, 640px); }
 
 .ig-cell > * { opacity: 0; transition: opacity .35s ease; }
 .ig-cell.ready > * { opacity: 1; }
