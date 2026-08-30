@@ -28,19 +28,28 @@ const latest = past[0] || null;
     ? `<div class="dday">D-${left} <span>남았습니다</span></div>`
     : '';
 
+  // 배경은 포스터를 흐리게 깔고, 포스터 원본은 오른쪽에 그대로 보여준다
+  const posterSrc = (withKey && withKey.poster) || (latest && latest.poster) || '';
+
   document.getElementById('hero').innerHTML = `
     <div class="hero-bg" style="background-image:url('${esc(bg)}')"></div>
     <div class="hero-inner">
-      <div class="wrap">
-        <span class="hero-eyebrow">${esc(eyebrow)}</span>
-        <h1>${esc(title)}</h1>
-        <p class="hero-sub">${orNoData(sub)}</p>
-        <p class="slogan">${esc(SITE.slogan)}</p>
-        ${dday}
-        <div class="hero-actions" style="margin-top:26px">
-          <a class="btn" href="events.html">경기 일정 보기</a>
-          <a class="btn ghost" href="events.html?tab=past">지난 대회 보기</a>
+      <div class="wrap hero-split">
+        <div class="hero-copy">
+          <span class="hero-eyebrow">${esc(eyebrow)}</span>
+          <h1>${esc(title)}</h1>
+          <p class="hero-sub">${orNoData(sub)}</p>
+          <p class="slogan">${esc(SITE.slogan)}</p>
+          ${dday}
+          <div class="hero-actions" style="margin-top:26px">
+            <a class="btn" href="events.html">경기 일정 보기</a>
+            <a class="btn ghost" href="events.html?tab=past">지난 대회 보기</a>
+          </div>
         </div>
+        ${posterSrc ? `
+        <a class="hero-poster" href="event.html?id=${encodeURIComponent(withKey ? withKey.id : latest.id)}">
+          <img src="${esc(posterSrc)}" alt="${esc(withKey ? withKey.title : latest.title)} 포스터">
+        </a>` : ''}
       </div>
     </div>`;
 })();
