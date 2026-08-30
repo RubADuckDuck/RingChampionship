@@ -379,7 +379,8 @@ a { color: inherit; text-decoration: none; }
 }
 /* 로딩 중에만 자리를 잡아둔다. 다 뜨면 원래 높이대로 */
 .ig-cell:not(.ready) { min-height: var(--ig-h, 640px); }
-/* embed 가 끝내 안 뜨는 경우에도 칸이 찌그러지지 않게 최소치를 남긴다 */
+/* embed 가 끝내 안 뜨면 자리 높이를 유지해 레이아웃이 무너지지 않게 한다 */
+.ig-cell.stalled { min-height: var(--ig-h, 640px); }
 .ig-cell { min-height: 200px; }
 
 .ig-cell > * { opacity: 0; transition: opacity .35s ease; }

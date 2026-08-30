@@ -5,7 +5,7 @@
    -------------------------------------------------------------------------- */
 initPage('instagram.html');
 
-const PER_PAGE = 10;                   // 한 페이지에 보여줄 게시물 수 (숫자만 바꾸면 됩니다)
+const PER_PAGE = 12;                   // 한 페이지에 보여줄 게시물 수 (3열 기준 4줄. 숫자만 바꾸면 됩니다)
 const grid = document.getElementById('ig-grid');
 const statusEl = document.getElementById('ig-status');
 const pagerEl = document.getElementById('ig-pager');
@@ -108,8 +108,13 @@ function watchCell(cell) {
 
   const timer = setInterval(() => { if (grown()) finish(); }, 200);
 
-  // 10초가 지나도 높이가 안 잡히면 로딩 표시만 걷어낸다
-  setTimeout(() => { if (!done) finish(); }, 10000);
+  // 10초가 지나도 높이가 안 잡히면 (인스타 응답 지연/차단 등)
+  // 로딩 표시는 걷어내되, 칸이 찌그러지지 않게 자리 높이는 유지한다
+  setTimeout(() => {
+    if (done) return;
+    if (!grown()) cell.classList.add('stalled');
+    finish();
+  }, 10000);
 }
 
 /* --- 페이지 번호 (현재 앞뒤 2개 + 처음/끝) --------------------------------- */
