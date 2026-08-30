@@ -67,8 +67,47 @@ async function showPage(p, scroll) {
   history.replaceState(null, '', '?page=' + p);
   if (scroll) window.scrollTo({ top: 0, behavior: 'smooth' });
 
+  sizeCells();
+  grid.querySelectorAll('.ig-cell').forEach(watchCell);
+
   await loadEmbedScript();
   if (window.instgrm && window.instgrm.Embeds) window.instgrm.Embeds.process();
+}
+
+/* 칸 높이를 열 너비에 맞춰 잡는다.
+   인스타 embed 는 [계정 헤더] + [이미지] + [하단 UI] 구조다.
+   포스터가 세로 4:5 라 이미지 높이가 열 너비의 1.25배까지 커진다.
+   그 높이에 헤더/하단 여유를 더해 이미지가 잘리지 않게 한다.
+   (캡션·댓글 영역은 넘치면 잘리는데, 갤러리에서는 그게 오히려 깔끔하다) */
+function sizeCells() {
+  const cell = grid.querySelector('.ig-cell');
+  if (!cell) return;
+  const w = cell.getBoundingClientRect().width;
+  if (!w) return;
+  grid.style.setProperty('--ig-h', Math.round(w * 1.25 + 125) + 'px');
+}
+window.addEventListener('resize', sizeCells);
+
+/* 칸마다 embed 가 준비되면 부드럽게 드러낸다.
+   준비 전에는 자리만 지키고 로딩 표시가 돈다. */
+function watchCell(cell) {
+  let done = false;
+  const ready = () => {
+    if (done) return;
+    done = true;
+    cell.classList.add('ready');
+  };
+
+  const mo = new MutationObserver(() => {
+    const f = cell.querySelector('iframe');
+    if (!f) return;
+    mo.disconnect();
+    f.addEventListener('load', () => setTimeout(ready, 150), { once: true });
+    setTimeout(ready, 3000);          // load 가 안 오는 경우 대비
+  });
+  mo.observe(cell, { childList: true, subtree: true });
+
+  setTimeout(ready, 6000);            // 최후 안전장치
 }
 
 /* --- 페이지 번호 (현재 앞뒤 2개 + 처음/끝) --------------------------------- */

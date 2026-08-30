@@ -360,32 +360,46 @@ a { color: inherit; text-decoration: none; }
 
 
 /* 인스타그램 목록 ---------------------------------------------------------- */
-/* 게시물마다 높이가 달라서 격자로 깔면 줄이 들쭉날쭉해진다.
-   열(column) 레이아웃으로 흘려보내면 높이 차이가 자연스럽게 메워진다. */
+/* embed 는 blockquote 로 시작해 iframe 으로 교체되며 높이가 크게 변한다.
+   열(column) 레이아웃에서는 그때마다 전체가 다시 흘러 카드가 열 사이를 옮겨다닌다.
+   그래서 격자로 두고 칸 높이를 미리 고정해 자리를 잡아둔다. 밀림이 생기지 않는다. */
 .ig-grid {
-  column-width: 326px;
-  column-gap: 18px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(326px, 1fr));
+  gap: 18px;
 }
 .ig-cell {
-  break-inside: avoid;
-  -webkit-column-break-inside: avoid;
-  page-break-inside: avoid;
-  margin: 0 0 18px;
-  border-radius: var(--radius);
+  position: relative;
+  height: var(--ig-h, 700px);    /* 미리 잡아두는 자리 (열 너비에 맞춰 JS가 계산) */
   overflow: hidden;
+  border-radius: var(--radius);
   background: var(--bg-2);
   border: 1px solid var(--line);
   line-height: 0;
 }
-.ig-cell .instagram-media {
-  margin: 0 !important;
-  min-width: 0 !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  border: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
+
+/* 로딩 중에는 자리만 지키고, 준비되면 부드럽게 나타난다 */
+.ig-cell > * { opacity: 0; transition: opacity .35s ease; }
+.ig-cell.ready > * { opacity: 1; }
+.ig-cell::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(100deg, #131317 30%, #1b1b21 50%, #131317 70%);
+  background-size: 220% 100%;
+  animation: ig-shimmer 1.4s linear infinite;
+  transition: opacity .35s ease;
 }
+.ig-cell.ready::after { opacity: 0; }
+@keyframes ig-shimmer {
+  from { background-position: 120% 0; }
+  to   { background-position: -120% 0; }
+}
+
+.ig-cell .instagram-media {
+  margin: 0 !important; min-width: 0 !important;
+  width: 100% !important; max-width: 100% !important;
+  border: none !important; border-radius: 0 !important; box-shadow: none !important;
+}
+
 .ig-status {
   padding: 26px 0 4px; text-align: center;
   font-size: 13px; letter-spacing: .08em; color: var(--muted);
