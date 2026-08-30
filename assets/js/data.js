@@ -105,7 +105,6 @@ const EVENTS = [
     broadcast: 'YouTube 녹화중계',
     poster: 'assets/img/ring-06.jpg',
     thumb: 'assets/img/ring-06-thumb.jpg',
-    key: 'assets/img/hero-bg.jpg',
     status: '',
     cards: [
       {
@@ -146,6 +145,7 @@ const EVENTS = [
     broadcast: 'CH7HD (태국) · Tero Digital / RING CHAMPIONSHIP / Fairtex Fight YouTube',
     poster: 'assets/img/fairtex-2024.jpg',
     thumb: 'assets/img/fairtex-2024-thumb.jpg',
+    key: 'assets/img/hero-fairtex.jpg',   // 홈 히어로 배경 (김내철 대표 · PREM 공동 개최 포스터)
     status: '',
     cards: [
       {
