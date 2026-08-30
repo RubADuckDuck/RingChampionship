@@ -67,26 +67,58 @@ async function showPage(p, scroll) {
   history.replaceState(null, '', '?page=' + p);
   if (scroll) window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  sizeCells();
-  grid.querySelectorAll('.ig-cell').forEach(watchCell);
+  ro.disconnect();
+  grid.querySelectorAll('.ig-cell').forEach(cell => {
+    ro.observe(cell);              // 높이가 바뀌면 다시 배치
+    watchCell(cell);
+  });
+  layout();
 
   await loadEmbedScript();
   if (window.instgrm && window.instgrm.Embeds) window.instgrm.Embeds.process();
 }
 
-/* 칸 높이를 열 너비에 맞춰 잡는다.
-   인스타 embed 는 [계정 헤더] + [이미지] + [하단 UI] 구조다.
-   포스터가 세로 4:5 라 이미지 높이가 열 너비의 1.25배까지 커진다.
-   그 높이에 헤더/하단 여유를 더해 이미지가 잘리지 않게 한다.
-   (캡션·댓글 영역은 넘치면 잘리는데, 갤러리에서는 그게 오히려 깔끔하다) */
-function sizeCells() {
-  const cell = grid.querySelector('.ig-cell');
-  if (!cell) return;
-  const w = cell.getBoundingClientRect().width;
-  if (!w) return;
-  grid.style.setProperty('--ig-h', Math.round(w * 1.25 + 125) + 'px');
+/* --- 벽돌쌓기 배치 --------------------------------------------------------
+   카드를 순서대로 훑으면서 '지금 가장 짧은 칸' 밑에 놓는다.
+   윗줄은 1 2 3 으로 채워지고, 그 뒤부터는 빈 곳을 메우며 내려가 빈 공간이 남지 않는다.
+   embed 는 뜨는 도중에 높이가 바뀌므로, 바뀔 때마다 다시 배치한다.
+   -------------------------------------------------------------------------- */
+const GAP = 18;
+const MIN_COL = 326;                   // 인스타 embed 가 찌그러지지 않는 최소 폭
+
+function layout() {
+  const cells = [...grid.children];
+  if (!cells.length) return;
+
+  const total = grid.clientWidth;
+  const cols = Math.max(1, Math.min(cells.length, Math.floor((total + GAP) / (MIN_COL + GAP))));
+  const colW = Math.floor((total - GAP * (cols - 1)) / cols);
+
+  // 아직 안 뜬 칸이 잡아둘 높이도 열 너비에 맞춰 갱신
+  grid.style.setProperty('--ig-h', Math.round(colW * 1.25 + 125) + 'px');
+
+  const heights = new Array(cols).fill(0);
+  cells.forEach(cell => {
+    cell.style.width = colW + 'px';
+    let c = 0;
+    for (let i = 1; i < cols; i++) if (heights[i] < heights[c]) c = i;   // 가장 짧은 칸
+    cell.style.transform = `translate(${c * (colW + GAP)}px, ${heights[c]}px)`;
+    heights[c] += cell.offsetHeight + GAP;
+  });
+
+  grid.style.height = (Math.max(...heights) - GAP) + 'px';
 }
-window.addEventListener('resize', sizeCells);
+
+/* 여러 칸이 동시에 바뀌어도 한 번만 다시 배치한다 */
+let pending = false;
+function relayout() {
+  if (pending) return;
+  pending = true;
+  requestAnimationFrame(() => { pending = false; layout(); });
+}
+
+const ro = new ResizeObserver(relayout);
+window.addEventListener('resize', relayout);
 
 /* 칸마다 embed 가 준비되면 부드럽게 드러낸다.
    주의: iframe 이 생겼다고 바로 준비된 게 아니다. 내용이 들어오기 전에는
@@ -99,6 +131,7 @@ function watchCell(cell) {
     done = true;
     clearInterval(timer);
     cell.classList.add('ready');
+    relayout();
   };
 
   const grown = () => {
@@ -114,6 +147,7 @@ function watchCell(cell) {
     if (done) return;
     if (!grown()) cell.classList.add('stalled');
     finish();
+    relayout();
   }, 10000);
 }
 
