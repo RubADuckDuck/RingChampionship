@@ -205,21 +205,30 @@ function boutRow(b) {
   const head = (b.tag === 'MAIN EVENT' || b.title) ? ' headline' : '';
   const ko = weightKo(b.weight);
   const cls = b.weight ? esc(b.weight) + (ko ? ` <span class="muted">${ko}</span>` : '') : '';
+
+  // 결과가 있으면 승자를 표시한다
+  const r = b.result || null;
+  const winRed  = r && r.winner === 'red'  ? ' win' : '';
+  const winBlue = r && r.winner === 'blue' ? ' win' : '';
+
   return `
-    <div class="bout${head}">
-      <div class="side red">
+    <div class="bout${head}${r ? ' done' : ''}">
+      <div class="side red${winRed}">
         <div class="fighter">${esc(b.red)}</div>
         ${b.redTeam ? `<div class="team">${esc(b.redTeam)}</div>` : ''}
+        ${winRed ? '<div class="win-tag">WIN</div>' : ''}
       </div>
       <div class="mid">
         ${b.tag ? `<span class="tag">${esc(b.tag)}</span>` : ''}
         <div class="vs">VS</div>
         ${cls ? `<div class="cls">${cls}</div>` : ''}
         ${b.rule ? `<div class="rule">${esc(b.rule)}</div>` : ''}
+        ${r && r.method ? `<div class="method">${esc(r.method)}</div>` : ''}
       </div>
-      <div class="side blue">
+      <div class="side blue${winBlue}">
         <div class="fighter">${esc(b.blue)}</div>
         ${b.blueTeam ? `<div class="team">${esc(b.blueTeam)}</div>` : ''}
+        ${winBlue ? '<div class="win-tag">WIN</div>' : ''}
       </div>
     </div>`;
 }

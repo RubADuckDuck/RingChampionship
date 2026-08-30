@@ -152,8 +152,24 @@ const EVENTS = [
         name: 'MAIN CARD',
         time: '',
         bouts: [
-          { tag: 'MAIN EVENT', rule: '', weight: '-65KG',
-            red: 'KWON GI SEOP', redTeam: '대한민국', blue: 'SALAWEEN PETNONG', blueTeam: '태국' }
+          { tag: 'MAIN EVENT', rule: '무에타이', weight: '-65KG',
+            red: '살라윈 펫농키', redTeam: '태국', blue: '권기섭', blueTeam: '대한민국',
+            result: { winner: 'red', method: '심판 전원일치 판정승 3:0' } },
+          { tag: '5경기', rule: 'MMA', weight: '밴텀급 (-62KG)',
+            red: '욧카이껫 Y2K 페어텍스', redTeam: '태국', blue: '김종필', blueTeam: '대한민국',
+            result: { winner: 'red', method: '심판 전원일치 판정승 3:0' } },
+          { tag: '4경기', rule: '무에타이', weight: '-66KG',
+            red: '최재욱', redTeam: '대한민국', blue: '신토통 소 타나콘', blueTeam: '태국',
+            result: { winner: 'red', method: '심판 전원일치 판정승 3:0' } },
+          { tag: '3경기', rule: 'MMA', weight: '-67.5KG',
+            red: '남대현', redTeam: '대한민국', blue: '타나왓 라치나릿', blueTeam: '태국',
+            result: { winner: 'red', method: '1R 2:08 TKO승' } },
+          { tag: '2경기', rule: '무에타이', weight: '-58KG',
+            red: '구태원', redTeam: '대한민국', blue: '쿤크라이 PK 샌차이', blueTeam: '태국',
+            result: { winner: 'red', method: '1R 2:58 KO승 (백엘보)' } },
+          { tag: '1경기', rule: '무에타이', weight: '-60KG',
+            red: '요드타농 펫나파차이', redTeam: '태국', blue: '곽령표', blueTeam: '대한민국',
+            result: { winner: 'red', method: '심판 전원일치 판정승 3:0' } }
         ]
       }
     ],
@@ -166,17 +182,39 @@ const EVENTS = [
     tier: 'PRO',
     number: '05',
     title: 'RING CHAMPIONSHIP 05',
-    subtitle: '',
+    subtitle: '어반스테이 (URBANSTAY)',
     date: '2024-10-20',
     time: '',
     venue: '인천 상상플랫폼 웨이브홀',
     venueEn: 'SANGSANG PLATFORM WAVE HALL, INCHEON',
-    broadcast: '',
+    broadcast: 'IB스포츠(TV) · 네이버 · 카카오 · YouTube (한국어 · 영어)',
     poster: '',
     thumb: '',
     status: '',
-    cards: [],
-    sponsors: []
+    cards: [
+      {
+        name: 'MAIN CARD',
+        time: '',
+        bouts: [
+          { tag: '밴텀급 토너먼트 4강', rule: 'MMA', weight: '밴텀급',
+            red: '김은성', redTeam: '케이레슬링', blue: '타케시 쿠니토', blueTeam: '일본',
+            result: { winner: 'red', method: '1R 4:04 TKO승 (니킥-파운딩)' } },
+          { tag: '밴텀급 토너먼트 4강', rule: 'MMA', weight: '밴텀급',
+            red: '볼렛 자만베코프', redTeam: '카자흐스탄', blue: '신유민', blueTeam: '포항 팀매드',
+            result: { winner: 'red', method: '2R 3:23 서브미션승 (리어네이키드초크)' } },
+          { rule: 'MMA', weight: '미들급',
+            red: '막심 미크티프', redTeam: '러시아', blue: '윤재웅', blueTeam: '팀혼',
+            result: { winner: 'red', method: '3R 종료 판정승 3:0' } },
+          { rule: 'MMA', weight: '플라이급',
+            red: '와다 노리요시', redTeam: '일본', blue: '송민서', blueTeam: '오스타짐',
+            result: { winner: 'red', method: '3R 종료 판정승 2:1' } },
+          { rule: 'MMA', weight: '라이트급',
+            red: '박지환', redTeam: '본주짓수', blue: '문준희', blueTeam: '하바스MMA',
+            result: { winner: 'red', method: '3R 종료 판정승 2:1' } }
+        ]
+      }
+    ],
+    sponsors: ['URBANSTAY', 'JRCC']
   },
 
   {
@@ -189,12 +227,40 @@ const EVENTS = [
     time: '19:00',
     venue: '더케이호텔 서울 그랜드볼룸 (서초구 바우뫼로12길 70)',
     venueEn: 'THE-K HOTEL SEOUL GRAND BALLROOM',
-    broadcast: 'IB SPORTS 생중계 / YouTube (영어 · 일본어 · 우즈베크어)',
+    broadcast: 'IB SPORTS 생중계 · YouTube (영어 · 일본어 · 우즈베크어)',
     poster: '',
     thumb: '',
     status: '',
-    cards: [],
-    sponsors: []
+    cards: [
+      {
+        name: 'MAIN CARD',
+        time: '19:00',
+        bouts: [
+          { tag: '밴텀급 토너먼트 8강', rule: 'MMA', weight: '밴텀급',
+            red: 'TAKESHI KUNITO', blue: 'PARK SANG HYUN',
+            result: { winner: 'red', method: '부전승 (Won by Default)' } },
+          { tag: '6경기 · 밴텀급 토너먼트', rule: 'MMA', weight: '밴텀급',
+            red: 'BOLAT ZAMANBEKOV', blue: 'MOON GUK HWAN',
+            result: { winner: 'red', method: '심판 전원일치 판정승 3:0' } },
+          { tag: '5경기 · 밴텀급 토너먼트', rule: 'MMA', weight: '밴텀급',
+            red: 'SHIN YOU MIN', blue: 'LEE HWI JAE',
+            result: { winner: 'red', method: '3R 4:55 TKO승 (파운딩)' } },
+          { tag: '4경기 · 밴텀급 토너먼트', rule: 'MMA', weight: '밴텀급',
+            red: 'KIM EUN SUNG', blue: 'SON GEUN HO',
+            result: { winner: 'red', method: '심판 전원일치 판정승 3:0' } },
+          { tag: '3경기 · 슈퍼파이트', rule: 'MMA', weight: '아톰급',
+            red: 'AIRA KOGA', blue: 'PARK BO HYUN',
+            result: { winner: 'red', method: '판정승 2:1' } },
+          { tag: '2경기 · 슈퍼파이트', rule: '무에타이', weight: '-66KG 캐치웨이트',
+            red: 'SHIN DONG HYUN', blue: 'VALENTIN COMPAGNON',
+            result: { winner: 'red', method: '3R 1:18 TKO승 (펀치)' } },
+          { tag: '1경기 · 슈퍼파이트', rule: 'MMA', weight: '밴텀급',
+            red: 'KIM JONG PIL', blue: 'LEE JUNG WON',
+            result: { winner: 'red', method: 'TKO승' } }
+        ]
+      }
+    ],
+    sponsors: ['FAIRTEX', 'JRCC KOREA OPEN', 'IB SPORTS']
   },
 
   {
@@ -205,17 +271,46 @@ const EVENTS = [
     subtitle: '',
     date: '2023-09-08',
     time: '18:00',
-    venue: '크레스트72 글래스홀 (서울 중구 장충동 201-6)',
+    venue: '크레스트72 글래스홀 / 월드케이팝센터 (서울 중구 장충동 201-6)',
     venueEn: 'CREST72 GLASS HALL, SEOUL',
     broadcast: 'IB SPORTS',
     poster: '',
     thumb: '',
     status: '',
     cards: [
-      { name: 'UNDER CARD', time: '18:00', bouts: [] },
-      { name: 'MAIN CARD',  time: '20:00', bouts: [] }
+      {
+        name: 'MAIN CARD',
+        time: '20:00',
+        bouts: [
+          { tag: '9경기', rule: 'MMA', weight: '',
+            red: 'JEONG JE IL',   blue: 'KAZUMASA' },
+          { tag: '8경기', rule: 'MMA', weight: '',
+            red: 'YOON JAE UNG',  blue: 'MUHAMMAD SUFI' },
+          { tag: '7경기', rule: 'MMA', weight: '',
+            red: 'SUNG HYUN JONG', blue: 'KIM JUN HYUN' },
+          { tag: '6경기', rule: 'MMA', weight: '',
+            red: 'JANG BUM SEOK', blue: 'BAE DONG HYEOK' },
+          { tag: '5경기', rule: 'MMA', weight: '',
+            red: 'LEE HWI JAE',   blue: 'KIM SU HYUN' }
+        ]
+      },
+      {
+        name: 'UNDER CARD',
+        time: '18:00',
+        bouts: [
+          { tag: '4경기', rule: 'MMA', weight: '',
+            red: 'SONG MIN SEO',  blue: 'KWON SE WON' },
+          { tag: '3경기', rule: 'MMA', weight: '',
+            red: 'HAM KI WAN',    blue: 'SEO GEUN HO' },
+          { tag: '2경기', rule: 'MMA', weight: '',
+            red: 'PARK GUN WOO',  blue: 'KIM SUNG JIN' },
+          { tag: '1경기', rule: 'MMA', weight: '',
+            red: 'LEE JUN HWAN',  blue: 'SHIN JUN HO' }
+        ]
+      }
     ],
-    sponsors: []
+    sponsors: ['KELLOGGS KOREA', 'FAIRTEX', 'FAIRTEX FIGHT', 'YUTH SPORT GEAR',
+               'ALL FIGHTS UNIVERSE', 'CRESPE', "I'ZEMI KOREA"]
   },
 
   {
