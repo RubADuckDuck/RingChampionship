@@ -89,25 +89,27 @@ function sizeCells() {
 window.addEventListener('resize', sizeCells);
 
 /* 칸마다 embed 가 준비되면 부드럽게 드러낸다.
-   준비 전에는 자리만 지키고 로딩 표시가 돈다. */
+   주의: iframe 이 생겼다고 바로 준비된 게 아니다. 내용이 들어오기 전에는
+   높이가 0에 가까워서, 그 상태에서 자리표시를 풀면 칸이 찌그러진다.
+   그래서 "실제로 높이가 잡혔을 때"만 준비된 것으로 본다. */
 function watchCell(cell) {
   let done = false;
-  const ready = () => {
+  const finish = () => {
     if (done) return;
     done = true;
+    clearInterval(timer);
     cell.classList.add('ready');
   };
 
-  const mo = new MutationObserver(() => {
+  const grown = () => {
     const f = cell.querySelector('iframe');
-    if (!f) return;
-    mo.disconnect();
-    f.addEventListener('load', () => setTimeout(ready, 150), { once: true });
-    setTimeout(ready, 3000);          // load 가 안 오는 경우 대비
-  });
-  mo.observe(cell, { childList: true, subtree: true });
+    return f && f.getBoundingClientRect().height > 150;
+  };
 
-  setTimeout(ready, 6000);            // 최후 안전장치
+  const timer = setInterval(() => { if (grown()) finish(); }, 200);
+
+  // 10초가 지나도 높이가 안 잡히면 로딩 표시만 걷어낸다
+  setTimeout(() => { if (!done) finish(); }, 10000);
 }
 
 /* --- 페이지 번호 (현재 앞뒤 2개 + 처음/끝) --------------------------------- */

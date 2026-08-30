@@ -360,25 +360,28 @@ a { color: inherit; text-decoration: none; }
 
 
 /* 인스타그램 목록 ---------------------------------------------------------- */
-/* embed 는 blockquote 로 시작해 iframe 으로 교체되며 높이가 크게 변한다.
-   열(column) 레이아웃에서는 그때마다 전체가 다시 흘러 카드가 열 사이를 옮겨다닌다.
-   그래서 격자로 두고 칸 높이를 미리 고정해 자리를 잡아둔다. 밀림이 생기지 않는다. */
+/* 격자로 좌 -> 우, 위 -> 아래 순서로 채운다 (1 2 3 / 4 5 6 / 7 8 9 ...).
+   칸 높이는 고정하지 않는다. 게시물마다 세로 길이가 달라도 원래 형태를 살린다.
+   대신 로딩 중에는 최소 높이로 자리를 잡아둬서 화면이 크게 밀리지 않게 한다. */
 .ig-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(326px, 1fr));
   gap: 18px;
+  align-items: start;            /* 같은 줄에서 짧은 카드가 늘어나지 않게 */
 }
 .ig-cell {
   position: relative;
-  height: var(--ig-h, 700px);    /* 미리 잡아두는 자리 (열 너비에 맞춰 JS가 계산) */
-  overflow: hidden;
   border-radius: var(--radius);
+  overflow: hidden;
   background: var(--bg-2);
   border: 1px solid var(--line);
   line-height: 0;
 }
+/* 로딩 중에만 자리를 잡아둔다. 다 뜨면 원래 높이대로 */
+.ig-cell:not(.ready) { min-height: var(--ig-h, 640px); }
+/* embed 가 끝내 안 뜨는 경우에도 칸이 찌그러지지 않게 최소치를 남긴다 */
+.ig-cell { min-height: 200px; }
 
-/* 로딩 중에는 자리만 지키고, 준비되면 부드럽게 나타난다 */
 .ig-cell > * { opacity: 0; transition: opacity .35s ease; }
 .ig-cell.ready > * { opacity: 1; }
 .ig-cell::after {
