@@ -67,7 +67,7 @@ const latest = past[0] || null;
   const rows = [
     ['일시', next.date ? esc(fmtDate(next.date)) + (next.time ? ' · ' + esc(next.time) : '') : NO_DATA],
     ['장소', orNoData(next.venue)],
-    ['중계', orNoData(next.broadcast)]
+    ['중계', broadcastHtml(next)]
   ];
 
   box.innerHTML = `

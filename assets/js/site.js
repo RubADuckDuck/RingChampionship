@@ -70,6 +70,13 @@ function boutCount(ev) {
   return (ev.cards || []).reduce((n, c) => n + (c.bouts || []).length, 0);
 }
 
+/** 중계 표시. 링크(broadcastUrl)가 있으면 눌러서 이동할 수 있게 한다 */
+function broadcastHtml(ev) {
+  if (!ev.broadcast) return NO_DATA;
+  if (!ev.broadcastUrl) return esc(ev.broadcast);
+  return `<a class="ext-link" href="${esc(ev.broadcastUrl)}" target="_blank" rel="noopener">${esc(ev.broadcast)} ↗</a>`;
+}
+
 /** 대회 등급 뱃지 (PRO = RING CHAMPIONSHIP 본 대회 / AMATEUR = 아마추어 대회) */
 function tierBadge(ev) {
   if (ev.tier === 'AMATEUR') return '<span class="badge amateur">AMATEUR</span>';

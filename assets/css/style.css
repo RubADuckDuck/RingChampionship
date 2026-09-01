@@ -240,6 +240,8 @@ a { color: inherit; text-decoration: none; }
   display: grid; grid-template-columns: 96px 1fr; gap: 14px;
   padding: 13px 0; border-bottom: 1px solid var(--line); font-size: 15px;
 }
+.ext-link { color: var(--gold); border-bottom: 1px solid rgba(200,164,92,.35); }
+.ext-link:hover { color: var(--gold-2); border-bottom-color: var(--gold-2); }
 .info-list .k { color: var(--muted); font-size: 13px; font-weight: 700; letter-spacing: .06em; }
 
 /* 파이트 카드 ------------------------------------------------------------- */

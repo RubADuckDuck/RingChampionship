@@ -21,7 +21,7 @@ const left = daysUntil(ev.date);
 const rows = [
   ['일시', ev.date ? esc(fmtDate(ev.date)) + (ev.time ? ' · ' + esc(ev.time) : '') : NO_DATA],
   ['장소', ev.venue ? esc(ev.venue) + (ev.venueEn ? ` (${esc(ev.venueEn)})` : '') : NO_DATA],
-  ['중계', orNoData(ev.broadcast)],
+  ['중계', broadcastHtml(ev)],
   ['경기 수', boutCount(ev) ? `총 ${boutCount(ev)}경기` : NO_DATA]
 ];
 
