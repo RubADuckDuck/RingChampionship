@@ -24,6 +24,10 @@ const rows = [
   ['중계', broadcastHtml(ev)],
   ['경기 수', boutCount(ev) ? `총 ${boutCount(ev)}경기` : NO_DATA]
 ];
+if (ev.replayUrl) {
+  rows.push(['다시보기',
+    `<a class="ext-link" href="${esc(ev.replayUrl)}" target="_blank" rel="noopener">YouTube 재생목록 ↗</a>`]);
+}
 
 let badge = '';
 if (ev.placeholder) badge = '<span class="badge demo">예시 데이터</span>';
