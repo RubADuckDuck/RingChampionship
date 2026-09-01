@@ -106,7 +106,7 @@ function renderHeader(activeHref) {
   el.innerHTML = `
     <div class="wrap bar">
       <a class="brand" href="index.html">
-        <img src="assets/img/logo-ring-white.png" alt="RING CHAMPIONSHIP">
+        <img src="assets/img/logo-rc.png" alt="RING CHAMPIONSHIP">
       </a>
       <nav class="nav" id="nav">
         ${links}
@@ -139,7 +139,7 @@ function renderFooter() {
     <div class="wrap">
       <div class="footer-top">
         <div>
-          <img class="logo" src="assets/img/logo-ring-white.png" alt="RING CHAMPIONSHIP">
+          <img class="logo" src="assets/img/logo-rc.png" alt="RING CHAMPIONSHIP">
           <p class="desc">${esc(SITE.slogan)}</p>
         </div>
         <div class="footer-nav">
