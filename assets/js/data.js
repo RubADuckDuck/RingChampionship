@@ -354,6 +354,60 @@ const EVENTS = [
     sponsors: []
   },
   {
+    id: 'future-league-19',
+    tier: 'AMATEUR',
+    number: '19',
+    title: 'FUTURE LEAGUE 19',
+    subtitle: '',
+    date: '2026-02-28',
+    time: '',
+    venue: '',
+    broadcast: 'YouTube 생중계',
+    broadcastUrl: 'https://www.youtube.com/watch?v=qPyq3MzGsKc',
+    poster: '',
+    thumb: '',
+    status: '',
+    cards: [],
+    sponsors: []
+  },
+
+  {
+    id: 'future-league-09',
+    tier: 'AMATEUR',
+    number: '09',
+    title: 'FUTURE LEAGUE 09',
+    subtitle: '',
+    date: '2024-10-19',
+    time: '',
+    venue: '인천 상상플랫폼 웨이브홀 (인천시 월미로 33)',
+    broadcast: 'YouTube 생중계',
+    broadcastUrl: 'https://www.youtube.com/watch?v=TeWZkWoqyHc',
+    poster: 'assets/img/ev/future-league-09.jpg',
+    thumb: 'assets/img/ev/future-league-09-thumb.jpg',
+    status: '',
+    cards: [],
+    sponsors: []
+  },
+
+  {
+    id: 'future-league-07',
+    tier: 'AMATEUR',
+    number: '07',
+    title: 'FUTURE LEAGUE 07',
+    subtitle: 'CHALLENGE LEAGUE 03 동시 개최',
+    date: '2024-06-22',
+    time: '',
+    venue: '',
+    broadcast: 'YouTube 생중계',
+    broadcastUrl: 'https://www.youtube.com/watch?v=ICv-g1E8Nh8',
+    poster: '',
+    thumb: '',
+    status: '',
+    cards: [],
+    sponsors: []
+  },
+
+  {
     id: 'future-league-06',
     tier: 'AMATEUR',
     number: '06',
