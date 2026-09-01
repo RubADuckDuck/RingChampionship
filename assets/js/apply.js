@@ -4,6 +4,24 @@
    -------------------------------------------------------------------------- */
 initPage('future-league.html');
 
+
+/* 퓨쳐리그 안내 4칸 */
+(function renderInfo() {
+  const box = document.getElementById('fl-info');
+  if (!box) return;
+
+  const items = (typeof FL_INFO !== 'undefined' ? FL_INFO : []);
+  if (!items.length) { box.innerHTML = `<div class="empty-state">${NO_DATA}</div>`; return; }
+
+  box.innerHTML = items.map((it, i) => `
+    <div class="fl-step">
+      <div class="num">${String(i + 1).padStart(2, '0')}</div>
+      <h4>${esc(it.title)}</h4>
+      ${(it.body || []).map(t => `<p>${esc(t)}</p>`).join('')}
+      ${it.list ? `<div class="chips">${it.list.map(x => `<span>${esc(x)}</span>`).join('')}</div>` : ''}
+    </div>`).join('');
+})();
+
 /* 신청 링크 */
 (function renderApplyLinks() {
   const box = document.getElementById('apply-list');
